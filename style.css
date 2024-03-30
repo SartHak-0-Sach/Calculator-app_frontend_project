@@ -1,5 +1,681 @@
-*{
+.attribution {
+    font-size: 11px;
+    text-align: center;
+    color: white;
+  }
+  .attribution a {
+    color: hsl(228, 45%, 44%);
+  }
+  
+  @font-face {
+    font-family: LeagueSpartan;
+    src: url("./assets/fonts/LeagueSpartan-VariableFont_wght.ttf");
+  }
+  
+  body {
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+    font-family: LeagueSpartan;
+    background-color: hsl(222, 26%, 31%);
+  }
+  
+  .screen {
+    max-width: 100%;
+  }
+  .screen-output {
+    font-weight: 700;
+    white-space: pre-line;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  @media only screen and (max-width: 480px) {
+    header {
+      padding: 5%;
+    }
+  
+    .title {
+      color: white;
+    }
+  
+    .app-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto;
+      padding: 0 5% 5% 5%;
+    }
+  
+    .screen {
+      background-color: hsl(224, 36%, 15%);
+      margin-bottom: 5%;
+      border-radius: 10px;
+      padding: 6%;
+      color: white;
+      font-size: 2rem;
+      height: 35px;
+      display: grid;
+      align-items: center;
+    }
+  
+    .screen-output {
+      margin: 0;
+      text-align: right;
+    }
+  
+    .keyboard-container {
+      display: grid;
+      grid-auto-columns: 1fr;
+      grid-auto-rows: 1fr;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+      gap: 10px;
+      grid-template-areas:
+        "row-1"
+        "row-2"
+        "row-3"
+        "row-4"
+        "row-5";
+      background-color: hsl(223, 31%, 20%);
+      border-radius: 10px;
+      padding: 5%;
+    }
+  
+    .row-1,
+    .row-2,
+    .row-3,
+    .row-4,
+    .row-5 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      justify-items: center;
+      align-items: center;
+      gap: 10px;
+    }
+  
+    .row-1 {
+      grid-area: row-1;
+    }
+    .row-2 {
+      grid-area: row-2;
+    }
+    .row-3 {
+      grid-area: row-3;
+    }
+    .row-4 {
+      grid-area: row-4;
+    }
+    .row-5 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+      gap: 10px;
+      grid-template-areas: "reset-btn equal-btn";
+      grid-area: row-5;
+    }
+  
+    .normal-btn,
+    .reset-btn,
+    .delete-btn,
+    .equal-btn {
+      display: grid;
+      align-items: center;
+      justify-items: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      border-radius: 10px;
+      height: 50px;
+      color: #404e72;
+    }
+  
+    .normal-btn {
+      width: 100%;
+      height: 100%;
+      background-color: hsl(30, 25%, 89%);
+      -webkit-box-shadow: 0px 4px 0px 0px hsl(28, 16%, 65%);
+      -moz-box-shadow: 0px 4px 0px 0px hsl(28, 16%, 65%);
+      box-shadow: 0px 4px 0px 0px hsl(28, 16%, 65%);
+    }
+  
+    .delete-btn,
+    .reset-btn {
+      color: white;
+      background-color: hsl(225, 21%, 49%);
+      width: 100%;
+      -webkit-box-shadow: 0px 4px 0px 0px rgba(64, 78, 114, 1);
+      -moz-box-shadow: 0px 4px 0px 0px rgba(64, 78, 114, 1);
+      box-shadow: 0px 4px 0px 0px rgba(64, 78, 114, 1);
+    }
+  
+    .equal-btn {
+      background-color: hsl(6, 63%, 50%);
+      color: white;
+      width: 100%;
+      -webkit-box-shadow: 0px 4px 0px 0px hsl(6, 70%, 34%);
+      -moz-box-shadow: 0px 4px 0px 0px hsl(6, 70%, 34%);
+      box-shadow: 0px 4px 0px 0px hsl(6, 70%, 34%);
+    }
+  }
+  
+  @media only screen and (min-width: 481px) and (max-width: 768px) {
+    body {
+      padding: 5% 5% 5% 5%;
+    }
+  
+    header {
+      padding: 5%;
+    }
+  
+    .title {
+      color: white;
+    }
+  
+    .app-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto;
+      padding: 0 5% 5% 5%;
+    }
+  
+    .screen {
+      background-color: hsl(224, 36%, 15%);
+      margin-bottom: 5%;
+      border-radius: 10px;
+      padding: 6%;
+      color: white;
+      font-size: 2rem;
+      height: 35px;
+      display: grid;
+      align-items: center;
+    }
+  
+    .screen-output {
+      margin: 0;
+      text-align: right;
+    }
+  
+    .keyboard-container {
+      display: grid;
+      grid-auto-columns: 1fr;
+      grid-auto-rows: 1fr;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+      gap: 15px;
+      grid-template-areas:
+        "row-1"
+        "row-2"
+        "row-3"
+        "row-4"
+        "row-5";
+      background-color: hsl(223, 31%, 20%);
+      border-radius: 10px;
+      padding: 5%;
+    }
+  
+    .row-1,
+    .row-2,
+    .row-3,
+    .row-4,
+    .row-5 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      justify-items: center;
+      align-items: center;
+      gap: 15px;
+    }
+  
+    .row-1 {
+      grid-area: row-1;
+    }
+    .row-2 {
+      grid-area: row-2;
+    }
+    .row-3 {
+      grid-area: row-3;
+    }
+    .row-4 {
+      grid-area: row-4;
+    }
+    .row-5 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+      gap: 15px;
+      grid-template-areas: "reset-btn equal-btn";
+      grid-area: row-5;
+    }
+  
+    .normal-btn,
+    .reset-btn,
+    .delete-btn,
+    .equal-btn {
+      display: grid;
+      align-items: center;
+      justify-items: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      border-radius: 10px;
+      height: 50px;
+      color: #404e72;
+    }
+  
+    .normal-btn {
+      width: 100%;
+      height: 100%;
+      background-color: hsl(30, 25%, 89%);
+      -webkit-box-shadow: 0px 4px 0px 0px hsl(28, 16%, 65%);
+      -moz-box-shadow: 0px 4px 0px 0px hsl(28, 16%, 65%);
+      box-shadow: 0px 4px 0px 0px hsl(28, 16%, 65%);
+    }
+  
+    .delete-btn,
+    .reset-btn {
+      color: white;
+      background-color: hsl(225, 21%, 49%);
+      width: 100%;
+      -webkit-box-shadow: 0px 4px 0px 0px rgba(64, 78, 114, 1);
+      -moz-box-shadow: 0px 4px 0px 0px rgba(64, 78, 114, 1);
+      box-shadow: 0px 4px 0px 0px rgba(64, 78, 114, 1);
+    }
+  
+    .equal-btn {
+      background-color: hsl(6, 63%, 50%);
+      color: white;
+      width: 100%;
+      -webkit-box-shadow: 0px 4px 0px 0px hsl(6, 70%, 34%);
+      -moz-box-shadow: 0px 4px 0px 0px hsl(6, 70%, 34%);
+      box-shadow: 0px 4px 0px 0px hsl(6, 70%, 34%);
+    }
+  }
+  
+  @media only screen and (min-width: 768px) and (max-width: 1024px) {
+    body {
+      padding: 1% 20% 1% 20%;
+    }
+  
+    header {
+      padding: 5%;
+    }
+  
+    .title {
+      color: white;
+    }
+  
+    .app-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto;
+      padding: 0 5% 5% 5%;
+    }
+  
+    .screen {
+      background-color: hsl(224, 36%, 15%);
+      margin-bottom: 5%;
+      border-radius: 10px;
+      padding: 6%;
+      color: white;
+      font-size: 2rem;
+      height: 35px;
+      display: grid;
+      align-items: center;
+    }
+  
+    .screen-output {
+      margin: 0;
+      text-align: right;
+    }
+  
+    .keyboard-container {
+      display: grid;
+      grid-auto-columns: 1fr;
+      grid-auto-rows: 1fr;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+      gap: 15px;
+      grid-template-areas:
+        "row-1"
+        "row-2"
+        "row-3"
+        "row-4"
+        "row-5";
+      background-color: hsl(223, 31%, 20%);
+      border-radius: 10px;
+      padding: 5%;
+    }
+  
+    .row-1,
+    .row-2,
+    .row-3,
+    .row-4,
+    .row-5 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      justify-items: center;
+      align-items: center;
+      gap: 15px;
+    }
+  
+    .row-1 {
+      grid-area: row-1;
+    }
+    .row-2 {
+      grid-area: row-2;
+    }
+    .row-3 {
+      grid-area: row-3;
+    }
+    .row-4 {
+      grid-area: row-4;
+    }
+    .row-5 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+      gap: 15px;
+      grid-template-areas: "reset-btn equal-btn";
+      grid-area: row-5;
+    }
+  
+    .normal-btn,
+    .reset-btn,
+    .delete-btn,
+    .equal-btn {
+      display: grid;
+      align-items: center;
+      justify-items: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      border-radius: 10px;
+      height: 50px;
+      color: #404e72;
+    }
+  
+    .normal-btn {
+      width: 100%;
+      height: 100%;
+      background-color: hsl(30, 25%, 89%);
+      -webkit-box-shadow: 0px 4px 0px 0px hsl(28, 16%, 65%);
+      -moz-box-shadow: 0px 4px 0px 0px hsl(28, 16%, 65%);
+      box-shadow: 0px 4px 0px 0px hsl(28, 16%, 65%);
+    }
+  
+    .delete-btn,
+    .reset-btn {
+      color: white;
+      background-color: hsl(225, 21%, 49%);
+      width: 100%;
+      -webkit-box-shadow: 0px 4px 0px 0px rgba(64, 78, 114, 1);
+      -moz-box-shadow: 0px 4px 0px 0px rgba(64, 78, 114, 1);
+      box-shadow: 0px 4px 0px 0px rgba(64, 78, 114, 1);
+    }
+  
+    .equal-btn {
+      background-color: hsl(6, 63%, 50%);
+      color: white;
+      width: 100%;
+      -webkit-box-shadow: 0px 4px 0px 0px hsl(6, 70%, 34%);
+      -moz-box-shadow: 0px 4px 0px 0px hsl(6, 70%, 34%);
+      box-shadow: 0px 4px 0px 0px hsl(6, 70%, 34%);
+    }
+  }
+  
+  @media only screen and (min-width: 1024px) and (max-width: 1279px) {
+    body {
+      padding: 1% 25% 1% 25%;
+    }
+  
+    header {
+      padding: 5%;
+    }
+  
+    .title {
+      color: white;
+    }
+  
+    .app-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto;
+      padding: 0 5% 5% 5%;
+    }
+  
+    .screen {
+      background-color: hsl(224, 36%, 15%);
+      margin-bottom: 5%;
+      border-radius: 10px;
+      padding: 6%;
+      color: white;
+      font-size: 2rem;
+      height: 35px;
+      display: grid;
+      align-items: center;
+    }
+  
+    .screen-output {
+      margin: 0;
+      text-align: right;
+    }
+  
+    .keyboard-container {
+      display: grid;
+      grid-auto-columns: 1fr;
+      grid-auto-rows: 1fr;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+      gap: 15px;
+      grid-template-areas:
+        "row-1"
+        "row-2"
+        "row-3"
+        "row-4"
+        "row-5";
+      background-color: hsl(223, 31%, 20%);
+      border-radius: 10px;
+      padding: 5%;
+    }
+  
+    .row-1,
+    .row-2,
+    .row-3,
+    .row-4,
+    .row-5 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      justify-items: center;
+      align-items: center;
+      gap: 15px;
+    }
+  
+    .row-1 {
+      grid-area: row-1;
+    }
+    .row-2 {
+      grid-area: row-2;
+    }
+    .row-3 {
+      grid-area: row-3;
+    }
+    .row-4 {
+      grid-area: row-4;
+    }
+    .row-5 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+      gap: 15px;
+      grid-template-areas: "reset-btn equal-btn";
+      grid-area: row-5;
+    }
+  
+    .normal-btn,
+    .reset-btn,
+    .delete-btn,
+    .equal-btn {
+      display: grid;
+      align-items: center;
+      justify-items: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      border-radius: 10px;
+      height: 50px;
+      color: #404e72;
+    }
+  
+    .normal-btn {
+      width: 100%;
+      height: 100%;
+      background-color: hsl(30, 25%, 89%);
+      -webkit-box-shadow: 0px 4px 0px 0px hsl(28, 16%, 65%);
+      -moz-box-shadow: 0px 4px 0px 0px hsl(28, 16%, 65%);
+      box-shadow: 0px 4px 0px 0px hsl(28, 16%, 65%);
+    }
+  
+    .delete-btn,
+    .reset-btn {
+      color: white;
+      background-color: hsl(225, 21%, 49%);
+      width: 100%;
+      -webkit-box-shadow: 0px 4px 0px 0px rgba(64, 78, 114, 1);
+      -moz-box-shadow: 0px 4px 0px 0px rgba(64, 78, 114, 1);
+      box-shadow: 0px 4px 0px 0px rgba(64, 78, 114, 1);
+    }
+  
+    .equal-btn {
+      background-color: hsl(6, 63%, 50%);
+      color: white;
+      width: 100%;
+      -webkit-box-shadow: 0px 4px 0px 0px hsl(6, 70%, 34%);
+      -moz-box-shadow: 0px 4px 0px 0px hsl(6, 70%, 34%);
+      box-shadow: 0px 4px 0px 0px hsl(6, 70%, 34%);
+    }
+  }
+  
+  @media only screen and (min-width: 1280px) {
+    body {
+      padding: 5% 30% 5% 30%;
+    }
+  
+    header {
+      padding: 5%;
+    }
+  
+    .title {
+      color: white;
+    }
+  
+    .app-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto;
+      padding: 0 5% 5% 5%;
+    }
+  
+    .screen {
+      background-color: hsl(224, 36%, 15%);
+      margin-bottom: 5%;
+      border-radius: 10px;
+      padding: 6%;
+      color: white;
+      font-size: 2rem;
+      height: 35px;
+      display: grid;
+      align-items: center;
+    }
+  
+    .screen-output {
+      margin: 0;
+      text-align: right;
+    }
+  
+    .keyboard-container {
+      display: grid;
+      grid-auto-columns: 1fr;
+      grid-auto-rows: 1fr;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+      gap: 20px;
+      grid-template-areas:
+        "row-1"
+        "row-2"
+        "row-3"
+        "row-4"
+        "row-5";
+      background-color: hsl(223, 31%, 20%);
+      border-radius: 10px;
+      padding: 5%;
+    }
+  
+    .row-1,
+    .row-2,
+    .row-3,
+    .row-4,
+    .row-5 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      justify-items: center;
+      align-items: center;
+      gap: 20px;
+    }
+  
+    .row-1 {
+      grid-area: row-1;
+    }
+    .row-2 {
+      grid-area: row-2;
+    }
+    .row-3 {
+      grid-area: row-3;
+    }
+    .row-4 {
+      grid-area: row-4;
+    }
+    .row-5 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+      gap: 20px;
+      grid-template-areas: "reset-btn equal-btn";
+      grid-area: row-5;
+    }
+  
+    .normal-btn,
+    .reset-btn,
+    .delete-btn,
+    .equal-btn {
+      display: grid;
+      align-items: center;
+      justify-items: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      border-radius: 10px;
+      height: 50px;
+      color: #404e72;
+    }
+  
+    .normal-btn {
+      width: 100%;
+      height: 100%;
+      background-color: hsl(30, 25%, 89%);
+      -webkit-box-shadow: 0px 4px 0px 0px hsl(28, 16%, 65%);
+      -moz-box-shadow: 0px 4px 0px 0px hsl(28, 16%, 65%);
+      box-shadow: 0px 4px 0px 0px hsl(28, 16%, 65%);
+    }
+  
+    .delete-btn,
+    .reset-btn {
+      color: white;
+      background-color: hsl(225, 21%, 49%);
+      width: 100%;
+      -webkit-box-shadow: 0px 4px 0px 0px rgba(64, 78, 114, 1);
+      -moz-box-shadow: 0px 4px 0px 0px rgba(64, 78, 114, 1);
+      box-shadow: 0px 4px 0px 0px rgba(64, 78, 114, 1);
+    }
+  
+    .equal-btn {
+      background-color: hsl(6, 63%, 50%);
+      color: white;
+      width: 100%;
+      -webkit-box-shadow: 0px 4px 0px 0px hsl(6, 70%, 34%);
+      -moz-box-shadow: 0px 4px 0px 0px hsl(6, 70%, 34%);
+      box-shadow: 0px 4px 0px 0px hsl(6, 70%, 34%);
+    }
+  }

@@ -1,26 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Frontend Mentor | Calculator app</title>
+  </head>
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Calculator app</title>
+  <body>
+    <header>
+      <h1 class="title">calc</h1>
+    </header>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
+    <main class="app-container">
+      <div class="screen">
+        <p class="screen-output" id="screen-output">0</p>
+      </div>
+      <div class="keyboard-container">
+        <div class="row-1">
+          <div class="normal-btn">7</div>
+          <div class="normal-btn">8</div>
+          <div class="normal-btn">9</div>
+          <div class="delete-btn">DEL</div>
+        </div>
+        <div class="row-2">
+          <div class="normal-btn">4</div>
+          <div class="normal-btn">5</div>
+          <div class="normal-btn">6</div>
+          <div class="normal-btn">+</div>
+        </div>
+        <div class="row-3">
+          <div class="normal-btn">1</div>
+          <div class="normal-btn">2</div>
+          <div class="normal-btn">3</div>
+          <div class="normal-btn">-</div>
+        </div>
+        <div class="row-4">
+          <div class="normal-btn">.</div>
+          <div class="normal-btn">0</div>
+          <div class="normal-btn">/</div>
+          <div class="normal-btn">*</div>
+        </div>
+        <div class="row-5">
+          <div class="reset-btn">RESET</div>
+          <div class="equal-btn">=</div>
+        </div>
+      </div>
+    </main>
 
-
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-</body>
+    <footer>
+      <div class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. Coded by <a href="#">Ignacio Spreafico</a>.
+      </div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
 </html>
