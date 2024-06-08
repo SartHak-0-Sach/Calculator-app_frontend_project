@@ -1,67 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="./assets/images/favicon-32x32.png"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <title>Frontend Mentor | Calculator app</title>
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <!-- displays site properly based on user's device -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <body>
-    <header>
-      <h1 class="title">Calculator App</h1>
-    </header>
+  <link rel="icon" type="image/png" sizes="32x32" href="https://cdn2.iconfinder.com/data/icons/ios7-inspired-mac-icon-set/512/Calculator_512.png">  
+  <title>Calculator app</title>
 
-    <main class="app-container">
-      <div class="screen">
-        <p class="screen-output" id="screen-output">0</p>
-      </div>
-      <div class="keyboard-container">
-        <div class="row-1">
-          <div class="normal-btn">7</div>
-          <div class="normal-btn">8</div>
-          <div class="normal-btn">9</div>
-          <div class="delete-btn">DEL</div>
-        </div>
-        <div class="row-2">
-          <div class="normal-btn">4</div>
-          <div class="normal-btn">5</div>
-          <div class="normal-btn">6</div>
-          <div class="normal-btn">+</div>
-        </div>
-        <div class="row-3">
-          <div class="normal-btn">1</div>
-          <div class="normal-btn">2</div>
-          <div class="normal-btn">3</div>
-          <div class="normal-btn">-</div>
-        </div>
-        <div class="row-4">
-          <div class="normal-btn">.</div>
-          <div class="normal-btn">0</div>
-          <div class="normal-btn">/</div>
-          <div class="normal-btn">*</div>
-        </div>
-        <div class="row-5">
-          <div class="reset-btn">RESET</div>
-          <div class="equal-btn">=</div>
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+
+</head>
+<body>
+  <main class="calculator">
+    <div class="header">
+      <h1>calc</h1>
+      <h6>THEME</h6>
+      <div class="div">        
+        <div class="input">
+          <input id="theme1" type="radio" name="theme" value="0" checked>
+          <label for="theme1">1</label>
+          
+          <input id="theme2" type="radio" value="1" name="theme">
+          <label for="theme2">2</label>
+          
+          <input id="theme3" type="radio" value="2" name="theme">
+          <label for="theme3">3</label>
         </div>
       </div>
-    </main>
-
-    <footer>
-      <div class="attribution">
-        Challenge by
-        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
-          >Frontend Mentor</a
-        >. Coded by <a href="#">Sarthak Sachdev</a>.
-      </div>
-    </footer>
-    <script src="script.js"></script>
-  </body>
+    </div>
+    <div class="user-input">
+      <div data-previous-operand class="previous-operand"></div>
+      <div data-current-operand class="current-operand"></div>
+    </div>
+    <div class="grid-container">
+      <button data-num>7</button>
+      <button data-num>8</button>
+      <button data-num>9</button>
+      <button data-delete>DEL</button>
+      <button data-num>4</button>
+      <button data-num>5</button>
+      <button data-num>6</button>
+      <button data-operator>+</button>
+      <button data-num>1</button>
+      <button data-num>2</button>
+      <button data-num>3</button>
+      <button data-operator>-</button>
+      <button data-num>.</button>
+      <button data-num>0</button>
+      <button data-operator>/</button>
+      <button data-operator>×</button>
+      <button data-reset class="column-span">RESET</button>
+      <button data-output class="column-span">=</button>
+    </div>
+  </main>
+  
+  <!-- JAVASCRIPT -->
+  <script defer src="index.js"></script>
+</body>
 </html>
+
+ 
