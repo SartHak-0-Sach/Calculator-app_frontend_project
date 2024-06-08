@@ -1,43 +1,121 @@
-const output = document.querySelector("#screen-output");
-const buttons = document.querySelectorAll(
-  ".normal-btn, .delete-btn, .reset-btn, .equal-btn"
-);
+const links = document.querySelectorAll("link");
+const toggleBtn = document.querySelectorAll("input");
+const prevOperandText = document.querySelector("[data-previous-operand]");
+const currentOperandText = document.querySelector("[data-current-operand]");
+const deleteBtn = document.querySelector("[data-delete]");
+const resultBtn = document.querySelector("[data-output]");
+const resetBtn = document.querySelector("[data-reset]");
+const operands = document.querySelectorAll("[data-num]");
+const operatorBtn = document.querySelectorAll("[data-operator]");
+let prevOperand = prevOperandText.innerText;
+let currentOperand = currentOperandText.innerText;
+let operation;
 
-let currentExpression = "";
+function themeChange(i) {
+    if(i === "0"){
+        links[2].setAttribute("href", "");
+    } else {
+        links[2].setAttribute("href", `css/theme${i}.css`);
+    }
+}
 
-buttons.forEach((button) => {
-  button.addEventListener("click", handleClick);
+function reset() {
+    prevOperand = "";    
+    currentOperand = "";
+    operation = undefined;
+}
+
+function deleteOperand() {
+    currentOperand = currentOperand.toString().slice(0, -1);
+}
+
+function addNumber(number) {
+    if(number === "." && currentOperand.includes(".")) return;
+    currentOperand = currentOperand.toString() + number.toString();
+}
+
+function operationSelection(operate) {
+    if(currentOperandText === "") return;
+    if(prevOperandText !== "") {
+        calculatorOperation();
+    }
+    operation = operate;
+    prevOperand = currentOperand;
+    currentOperand = "";
+}
+
+function calculatorOperation() {
+    let result;
+    let prev = parseFloat(prevOperand);
+    let current = parseFloat(currentOperand);
+    if(isNaN(prev) || isNaN(current)) return;
+
+    switch(operation){
+        case "+":
+            result = prev + current;
+            break;
+
+        case "-":
+            result = prev - current 
+            break;
+
+        case "×":
+            result = prev * current; 
+            break; 
+
+        case "/":
+            result = prev / current;
+            break;
+
+        default: 
+            return;
+    } 
+    currentOperand = result;
+    operation = undefined;
+    prevOperand = "";
+    prevOperandText.innerText = "";
+}
+
+function displayNum() {
+    currentOperandText.innerText = currentOperand.toLocaleString("en");
+    if(operation !== undefined) {
+        prevOperandText.innerText = `${prevOperand} ${operation.toString("en")}`;
+    } else {
+        prevOperandText.innerText = prevOperand;
+    }
+}   
+
+toggleBtn.forEach(btn => {
+    btn.addEventListener("click", () => {
+        themeChange(btn.value);
+    });
+})
+
+resetBtn.addEventListener("click", () => {
+    reset();
+    displayNum();
 });
 
-function formatNumberWithCommas(number) {
-  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
+deleteBtn.addEventListener("click", () => {
+    deleteOperand();
+    displayNum();
+});
 
-function handleClick(event) {
-  const buttonValue = event.target.innerText;
+operands.forEach(operand => {
+    operand.addEventListener("click", () => {
+        addNumber(operand.innerText);
+        displayNum();
+    });
+});
+    
+operatorBtn.forEach(btn => {
+    btn.addEventListener("click", () => {
+        operationSelection(btn.innerText);
+        displayNum();        
+    })
+})
 
-  // Check the type of button clicked and perform the corresponding action
-  if (buttonValue === "DEL") {
-    // Handle delete button
-    currentExpression = currentExpression.slice(0, -1);
-  } else if (buttonValue === "RESET") {
-    // Handle reset button
-    currentExpression = "";
-  } else if (buttonValue === "=") {
-    // Handle equal button
-    try {
-      const result = eval(currentExpression);
-      output.innerText = formatNumberWithCommas(result);
-      currentExpression = result.toString(); // Store the result as the new current expression
-    } catch (error) {
-      output.innerText = "Error";
-      currentExpression = ""; // Clear the current expression in case of an error
-    }
-  } else {
-    // Handle normal buttons
-    currentExpression += buttonValue;
-  }
-
-  // Update the screen output with formatted number
-  output.innerText = formatNumberWithCommas(currentExpression);
-}
+resultBtn.addEventListener("click", () => {
+    calculatorOperation();
+    displayNum();
+});
